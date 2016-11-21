@@ -84,17 +84,18 @@ function wp_bsf_form_callback() {
 		        	<th scope="row">BSF Form Shortcode</th>
 		        	<td><input type="text" name="
 		        	" value="[bsf]" readonly="readonly" /> 
-		        	<p class="description">Paste this code in your page</p>
+		        	<p class="description">Paste this code in your page.</p>
 		        	</td>
 		        </tr>
 		        <tr valign="top">
 		        	<th scope="row">Enter Admin Email Id</th>
 		        	<td><input type="text" name="bsf_form_admin_email" required="required" value="<?php echo esc_attr( get_option('bsf_form_admin_email') ); ?>" />
+		        	<p class="description">Please enter admin email id here.</p>
 		        	</td>
 		        </tr>
 		        <tr valign="top">
 		        	<th scope="row">Google Assess Code</th>
-		        	<td><input type="text" name="bsf_form_google_code" required="required" value="><?php echo esc_attr( get_option('bsf_form_google_code')) ?>"  /><br /> 
+		        	<td><input type="text" name="bsf_form_google_code" required="required" value="<?php echo esc_attr( get_option('bsf_form_google_code')) ?>"  /><br /> 
 		        	<p class="description">
 				   	Click <a  href="https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=448551536053-e36uicg9npg51m0e89kb51i37b6741fq.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&state&scope=https%3A%2F%2Fspreadsheets.google.com%2Ffeeds%2F" target="_blank">here</a>to allow us to access your spreadsheets.</p>
 		           	</td>
@@ -102,11 +103,13 @@ function wp_bsf_form_callback() {
 		        <tr valign="top">
 		        	<th scope="row">Google Sheet Title</th>
 		        	<td><input type="text" name="bsf_form_google_sheet_title" required="required" value="<?php echo esc_attr( get_option('bsf_form_google_sheet_title') ); ?>" />
+		        	<p class="description">Enter your spreadsheet title.</p>
 		        	</td>
 		        </tr>
 		        <tr valign="top">
 		        	<th scope="row">Google Sheet Tab</th>
 		        	<td><input type="text" name="bsf_form_google_worksheet_tab" required="required" value="<?php echo esc_attr( get_option('bsf_form_google_worksheet_tab') ); ?>"  />
+		        	<p class="description">Enter your shpreadsheet tab, which is usually Sheet1 .</p>
 		        	</td>
 		        </tr>
 		        </table>
