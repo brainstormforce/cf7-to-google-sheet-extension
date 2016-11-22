@@ -4,6 +4,7 @@ include_once ( plugin_dir_path(__FILE__) . 'vendor/autoload.php' );
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
 
+define( 'cf7_to_sheet_path', plugin_dir_path( __FILE__ ) );
 
 class googlesheet {
 	private $token;
