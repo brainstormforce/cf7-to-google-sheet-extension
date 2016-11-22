@@ -6,7 +6,7 @@ Description: Save your contact form 7 data to google spreadsheet.
 Version:     1.0
 Author:      Abhijit
 Author URI:  https://abhijits.sharkz.in
-Text Domain: bsf-form
+Text Domain: cf7tosheet
 Domain Path: /languages
 */
 
@@ -28,10 +28,10 @@ add_action( 'admin_menu','register_cf7_to_sheet_setting' );
 function register_cf7_to_sheet_setting() {
     add_submenu_page( 
     	'options-general.php',	// Parent menu item slug
-    	'CF7 to Spreadsheet',	// Page Title
-    	'CF7 to Spreadsheet',	// Menu Title
+    	__('CF7 to Spreadsheet','cf7tosheet'),	// Page Title
+    	__('CF7 to Spreadsheet','cf7tosheet'),	// Menu Title
     	'manage_options',		// Capability
-    	'cf7-to-sheet',		// Menu Slug
+    	'cf7-to-sheet',			// Menu Slug
     	'cf7_setting_page'		// Callback function
         );
     add_action( 'admin_init', 'wp_bsf_form_register_setting' );
@@ -42,7 +42,7 @@ function wp_bsf_form_register_setting() {
 }
 
 add_action( 'admin_init',  'cf7_to_gs_css' );
-add_action( "admin_print_styles", 'cf7_to_gs_css' );
+add_action( 'admin_print_styles', 'cf7_to_gs_css' );
 /**
  * Register and enqueue our stylesheet.
  */
@@ -63,7 +63,7 @@ function save_cf7_gs_settings( $post ) {
 add_filter( 'wpcf7_editor_panels', 'cf7_to_sheet_editor_panels'  );
 function cf7_to_sheet_editor_panels( $panels ) {
   $panels[ 'google_sheets' ] = array(
-  	'title' => __( 'CF7 To Spreadsheet', 'contact-form-7' ),
+  	'title' => __( 'CF7 to Spreadsheet', 'cf7tosheet' ),
     'callback' =>'cf7_editor_panel_google_sheet'
   );
 
@@ -73,33 +73,36 @@ function cf7_to_sheet_editor_panels( $panels ) {
 function cf7_editor_panel_google_sheet( $post ) { 
 	$form_id = sanitize_text_field( $_GET['post'] );
 	$form_data = get_post_meta( $form_id, 'cf7_to_sheet_save' ); ?>
-	<form method="post">
-         <div class="cf7_field_gs">
-            <h2><span>Google Spreadsheet Settings</span></h2>
-            <p>
-            <label>Google Spreadsheet Name:</label>
-            <input type="text" name="cf7-sheet[sheet-name]" value="<?php echo ( isset ( $form_data[0]['sheet-name'] ) ) ? esc_attr( $form_data[0]['sheet-name'] ) : ''; ?>" />
-            </p>
-            <p>
-            <label>Google Spreadsheet Tab Name:</label>
-            <input type="text" name="cf7-sheet[sheet-tab-name]" value="<?php echo ( isset ( $form_data[0]['sheet-tab-name'] ) ) ? esc_attr( $form_data[0]['sheet-tab-name'] ) : ''; ?>"/>
-            </p>
-        </div>
-      </form>
+    <div class="wrap cf7-fields">
+    	<h2><?php echo esc_html( __( 'Google Spreadsheet Settings','cf7tosheet' ) ); ?></h2>
+		<p><?php echo esc_html( __( 'Add your spreadsheet details here.','cf7tosheet' ) ); ?></p>
+		<form  method="post" class="container">
+			<table class="form-table">
+		    	<tr valign="top">
+		        	<th scope="row"><?php echo esc_html( __( 'Google Spreadsheet Name','cf7tosheet' ) ); ?></th>
+		           	<td><input type="text" name="cf7-sheet[sheet-name]" class="large-text code" value="<?php echo ( isset ( $form_data[0]['sheet-name'] ) ) ? esc_attr( $form_data[0]['sheet-name'] ) : ''; ?>" />
+		        </tr>
+		        <tr valign="top">
+		        	<th scope="row"><?php echo esc_html( __( 'Google Spreadsheet Tab Name','cf7tosheet' ) ); ?></th>
+		           	<td><input type="text" name="cf7-sheet[sheet-tab-name]" class="large-text code" value="<?php echo ( isset ( $form_data[0]['sheet-tab-name'] ) ) ? esc_attr( $form_data[0]['sheet-tab-name'] ) : ''; ?>"/>
+		        </tr>
+		    </table>
+	  	</form>
+	</div>
 <?php }
 
 function cf7_setting_page() {?>
 	<div class="wrap">
-		<h1>CF7 to Spreadsheet Setting</h1>
+		<h1><?php echo esc_html( __( 'CF7 to Spreadsheet Setting','cf7tosheet' ) ); ?></h1>
 		<form  action="options.php" method="post" class="container">
 			<?php settings_fields( 'bsf_form_plugin_settings' ); ?>
 		    <?php do_settings_sections( 'bsf_form_plugin_settings' ); ?>
 		    <table class="form-table">
 		    	<tr valign="top">
-		        	<th scope="row">Google Access Code</th>
-		        	<p class="description">Click "Get code" to retrieve your code from Google Drive to allow us to access your spreadsheets. And paste the code in the below textbox.</p>
+		        	<th scope="row"> <?php echo esc_html( __( 'Google Access Code','cf7tosheet' ) ); ?></th>
+		        	<p class="description"> <?php echo esc_html( __( 'Click "Get code" to retrieve your code from Google Drive to allow us to access your spreadsheets. And paste the code in the below textbox.','cf7tosheet' ) ); ?></p>
 		        	<td><input type="text" name="bsf_form_google_code" required="required" value="<?php echo esc_attr( get_option('bsf_form_google_code')) ?>"  /> 
-		        	<a  href="https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=448551536053-e36uicg9npg51m0e89kb51i37b6741fq.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&state&scope=https%3A%2F%2Fspreadsheets.google.com%2Ffeeds%2F" target="_blank" >Get Code</a>
+		        	<a  href="https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=448551536053-e36uicg9npg51m0e89kb51i37b6741fq.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&state&scope=https%3A%2F%2Fspreadsheets.google.com%2Ffeeds%2F" target="_blank" ><?php echo esc_html( __( 'Get Code ','cf7tosheet' ) ); ?></a>
 		           	</td>
 		        </tr>
 		    </table>

@@ -1,17 +1,4 @@
-.cf7_field_gs {
-   position: relative;
-   min-width: 255px;
-   background: #fff;
-}
-.cf7_field_gs label {
-   margin: 0 25px 0 25px;
-   float: left;
-   width: 25%;
-   font-size: 14px;
-}
-.cf7_field_gs input {
-   width: 250px;
-}
-.cf7_field_gs span {
-   margin: 20px 0 20px 10px;
+
+#contact-form-editor .cf7-fields .form-table th {
+    width: 200px ;
 }
