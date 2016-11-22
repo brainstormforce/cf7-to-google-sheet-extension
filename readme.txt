@@ -17,6 +17,8 @@ When a visitor submits his/her data on your website via a Contact Form 7 form, o
 
 1. Upload `cf7-to-spreadsheet` to the `/wp-content/plugins/` directory and Install`.  
 2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Log in to your Google Account and create a new Sheet in which you have to send data. Also check which Sheet tab is used, usually 'Sheet1' is tab name.
+4. Add a column name in Row 1 for "date" and each form field you will have in your form (default CF7 form field names are "your-name", "your-email", "your-subject", "your-message") in next rows.
 3. Use the `Admin Panel > Setting > CF7 To spreadsheet` screen to connect to `Google Sheets Account` by entering the Access Code. You can get the Access Code by clicking the "Get Code" button. 
 4. Use the `Admin Panel > Contact form 7 > Select Contact form > On editor window - CF7 To spreadsheet` Add your Sheet Name And Tab Name 
 

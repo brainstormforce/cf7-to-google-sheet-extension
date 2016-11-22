@@ -1,6 +1,6 @@
 <?php
-require_once plugin_dir_path(__FILE__).'vendor/php-google-oauth/Google_Client.php';
-include_once ( plugin_dir_path(__FILE__) . 'vendor/autoload.php' );
+require_once plugin_dir_path(__FILE__).'php-google-oauth/Google_Client.php';
+include_once ( plugin_dir_path(__FILE__) . 'autoload.php' );
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
 
