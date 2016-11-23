@@ -1,4 +1,4 @@
-=== Contact Form 7 To Google Spreadsheet ===
+=== CF7 to Spreadsheet ===
 Contributors: brainstormforce, abhijits
 Donate link: https://www.brainstormforce.com/payment/
 Tags: google, sheets, spreadsheets, google sheets, google spreadsheets,  cf7, contact form 7, data, form, form data

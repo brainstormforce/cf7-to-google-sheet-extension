@@ -53,7 +53,7 @@ class Google_CurlIO implements Google_IO {
    * responseHttpCode, responseHeaders and responseBody.
    */
   public function authenticatedRequest(Google_HttpRequest $request) {
-    $request = Google_Client_New::$auth->sign($request);
+    $request = Google_Client::$auth->sign($request);
     return $this->makeRequest($request);
   }
 
@@ -172,7 +172,7 @@ class Google_CurlIO implements Google_IO {
   public function setCachedRequest(Google_HttpRequest $request) {
     // Determine if the request is cacheable.
     if (Google_CacheParser::isResponseCacheable($request)) {
-      Google_Client_New::$cache->set($request->getCacheKey(), $request);
+      Google_Client::$cache->set($request->getCacheKey(), $request);
       return true;
     }
 
@@ -190,7 +190,7 @@ class Google_CurlIO implements Google_IO {
       false;
     }
 
-    return Google_Client_New::$cache->get($request->getCacheKey());
+    return Google_Client::$cache->get($request->getCacheKey());
   }
 
   /**

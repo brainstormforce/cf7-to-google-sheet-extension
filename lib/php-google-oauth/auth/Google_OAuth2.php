@@ -92,7 +92,7 @@ class Google_OAuth2 extends Google_Auth {
 	
     if ($code) {
       // We got here from the redirect from a successful authorization grant, fetch the access token
-      $request = Google_Client_New::$io->makeRequest(new Google_HttpRequest(self::OAUTH2_TOKEN_URI, 'POST', array(), array(
+      $request = Google_Client::$io->makeRequest(new Google_HttpRequest(self::OAUTH2_TOKEN_URI, 'POST', array(), array(
           'code' => $code,
           'grant_type' => 'authorization_code',
           'redirect_uri' => $this->redirectUri,
@@ -110,6 +110,7 @@ class Google_OAuth2 extends Google_Auth {
         if ($decodedResponse != null && $decodedResponse['error']) {
           $response = $decodedResponse['error'];
         }
+		ns_google_sheets_connector::ns_debug_log("Error fetching OAuth2 access token, message: '$response' :: {$request->getResponseHttpCode()}");
 		
         throw new Google_AuthException("Error fetching OAuth2 access token, message: '$response'", $request->getResponseHttpCode());
       }
@@ -262,7 +263,7 @@ class Google_OAuth2 extends Google_Auth {
 
   private function refreshTokenRequest($params) {
     $http = new Google_HttpRequest(self::OAUTH2_TOKEN_URI, 'POST', array(), $params);
-    $request = Google_Client_New::$io->makeRequest($http);
+    $request = Google_Client::$io->makeRequest($http);
 
     $code = $request->getResponseHttpCode();
     $body = $request->getResponseBody();
@@ -296,7 +297,7 @@ class Google_OAuth2 extends Google_Auth {
       $token = $this->token['access_token'];
     }
     $request = new Google_HttpRequest(self::OAUTH2_REVOKE_URI, 'POST', array(), "token=$token");
-    $response = Google_Client_New::$io->makeRequest($request);
+    $response = Google_Client::$io->makeRequest($request);
     $code = $response->getResponseHttpCode();
     if ($code == 200) {
       $this->token = null;
@@ -327,7 +328,7 @@ class Google_OAuth2 extends Google_Auth {
   // are PEM encoded certificates.
   private function getFederatedSignOnCerts() {
     // This relies on makeRequest caching certificate responses.
-    $request = Google_Client_New::$io->makeRequest(new Google_HttpRequest(
+    $request = Google_Client::$io->makeRequest(new Google_HttpRequest(
         self::OAUTH2_FEDERATED_SIGNON_CERTS_URL));
     if ($request->getResponseHttpCode() == 200) {
       $certs = json_decode($request->getResponseBody(), true);
