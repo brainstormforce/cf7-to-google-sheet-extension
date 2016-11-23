@@ -37,13 +37,15 @@ function register_cf7_to_spreadsheet_setting() {
     add_action( 'admin_init', 'cf7_to_spreadsheet_register_setting' );
 }
 
-//register our settings
+/**
+ * Register our settings.
+ */
+
 function cf7_to_spreadsheet_register_setting() {
 	register_setting( 'cf7_to_spreadsheet_plugin_setting', 'cf7_to_spreadsheet_google_code' );
 }
 
 add_action( 'admin_init',  'cf7_to_spreadsheet_css' );
-add_action( 'admin_print_styles', 'cf7_to_spreadsheet_css' );
 /**
  * Register and enqueue our stylesheet.
  */

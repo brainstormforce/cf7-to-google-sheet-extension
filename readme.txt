@@ -3,7 +3,7 @@ Contributors: brainstormforce, abhijits
 Donate link: https://www.brainstormforce.com/payment/
 Tags: google, sheets, spreadsheets, google sheets, google spreadsheets,  cf7, contact form 7, data, form, form data
 Requires at least: 
-Version:1.0
+Version:1.0.0
 License: 
 License URI: 
 
@@ -41,6 +41,10 @@ This is simple way to maintain your contact form 7 data backup.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Use the `Admin Panel > Setting > CF7 To spreadsheet` screen to connect to `Google Sheets Account` by entering the Access Code. You can get the Access Code by clicking the "Get Code" button. 
 4. Use the `Admin Panel > Contact form 7 > Select Contact form > On editor window tab - CF7 To spreadsheet` Add your Sheet Name And Tab Name.
+
+== Screenshots ==
+
+1. Plugin Settings and How to Configure your Google Spreadsheet and your Contact Form 7.
 
 == Changelog ==
 
