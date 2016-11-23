@@ -2,17 +2,11 @@
 Contributors: brainstormforce, abhishilawat
 Donate link: https://www.brainstormforce.com/payment/
 Tags: google, sheets, spreadsheets, google sheets, google spreadsheets,  cf7, contact form 7, data, form, form data
-<<<<<<< HEAD
-Requires at least: 
-License: 
-License URI: 
-=======
 Requires at least: 4.4
 Tested up to: 4.6.1
 Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
->>>>>>> 6b28b5f84fc3df1d9018eec6af709525d0597b46
 
 Send your Contact Form 7 data directly to your Google Spreadsheet.
 
