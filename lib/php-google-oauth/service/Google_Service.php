@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-class Google_Service_New {
+class Google_Service {
   public $version;
   public $servicePath;
   public $resource;

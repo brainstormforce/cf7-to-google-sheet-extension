@@ -65,7 +65,7 @@ require_once('service/Google_MediaFileUpload.php');
  * @author Chris Chabot <chabotc@google.com>
  * @author Chirag Shah <chirags@google.com>
  */
-class Google_Client_New {
+class Google_Client {
   /**
    * @static
    * @var Google_Auth $auth
@@ -162,7 +162,7 @@ class Google_Client_New {
 
   /**
    * Set the OAuth 2.0 access token using the string that resulted from calling authenticate()
-   * or Google_Client_New #getAccessToken().
+   * or Google_Client#getAccessToken().
    * @param string $accessToken JSON encoded string containing in the following format:
    * {"access_token":"TOKEN", "refresh_token":"TOKEN", "token_type":"Bearer",
    *  "expires_in":3600, "id_token":"TOKEN", "created":1320790426}
@@ -384,7 +384,7 @@ class Google_Client_New {
    * @return Google_Auth the implementation of apiAuth.
    */
   public static function getAuth() {
-    return Google_Client_New ::$auth;
+    return Google_Client::$auth;
   }
 
   /**
@@ -392,14 +392,14 @@ class Google_Client_New {
    * @return Google_IO the implementation of apiIo.
    */
   public static function getIo() {
-    return Google_Client_New ::$io;
+    return Google_Client::$io;
   }
 
   /**
    * @return Google_Cache the implementation of apiCache.
    */
   public function getCache() {
-    return Google_Client_New ::$cache;
+    return Google_Client::$cache;
   }
 }
 
