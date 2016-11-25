@@ -35,7 +35,16 @@ function register_cf7_to_spreadsheet_setting() {
         );
     add_action( 'admin_init', 'cf7_to_spreadsheet_register_setting' );
 }
-
+/**
+* Notice for contact form activation
+*/
+add_action( 'admin_notices','confirm_cf7_activate' );
+function confirm_cf7_activate(){
+	if ( !function_exists( 'wpcf7' ) ) {
+		$network_url = network_admin_url('plugin-install.php?s=contact+form+7&tab=search&type=term');
+		echo "<div class='error'><p>CF7 to Spreadsheet requires <a href=".$network_url."> Contact Form7</a> is installed and activated. </p></div>";
+	}	
+}
 /**
 * Register our settings.
 */
