@@ -4,7 +4,7 @@ include_once ( plugin_dir_path(__FILE__) . 'autoload.php' );
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
 
-class googlespreadsheet {
+class google_spreadsheet {
 	private $token;
 	private $spreadsheet;
 	private $worksheet;
@@ -15,13 +15,13 @@ class googlespreadsheet {
 
 	public static function google_pre_authentication( $access_code ){		
 		$client = new Google_Client();
-		$client->setClientId( googlespreadsheet::clientId );
-		$client->setClientSecret( googlespreadsheet::clientSecret );
-		$client->setRedirectUri( googlespreadsheet::redirect );
+		$client->setClientId( google_spreadsheet::clientId );
+		$client->setClientSecret( google_spreadsheet::clientSecret );
+		$client->setRedirectUri( google_spreadsheet::redirect );
 		$client->setScopes( array( 'https://spreadsheets.google.com/feeds' ) );
 		$results = $client->authenticate( $access_code );
 		$token_data = json_decode( $client->getAccessToken(), true );
-		googlespreadsheet::update_token( $token_data );
+		google_spreadsheet::update_token( $token_data );
 	}
 	
 	public static function update_token( $token_data ){
@@ -38,11 +38,11 @@ class googlespreadsheet {
 		$token_data = json_decode( get_option( 'cf7_to_spreadsheet_google_token' ), true );	
 		if( time() > $token_data['expire'] ){
 			$client = new Google_Client();
-			$client->setClientId( googlespreadsheet::clientId );
-			$client->setClientSecret( googlespreadsheet::clientSecret );
+			$client->setClientId( google_spreadsheet::clientId );
+			$client->setClientSecret( google_spreadsheet::clientSecret );
 			$client->refreshToken( $token_data['refresh_token'] );
 			$token_data = array_merge( $token_data, json_decode( $client->getAccessToken(), true ) );
-			googlespreadsheet::update_token( $token_data );
+			google_spreadsheet::update_token( $token_data );
 		}
 		/* this is needed */
 		$accessToken = $token_data['access_token'];
