@@ -1,8 +1,10 @@
 <!-- Contact form7 editor panel tab html form -->
+
 <div class="wrap cf7-fields">
 	<h2><?php __( 'Google Spreadsheet Settings','cf-7-to-spreadsheet' ); ?></h2>
 	<p><?php __( 'Add your spreadsheet details here.','cf-7-to-spreadsheet' ); ?></p>
 	<form  method="post" class="container">
+		<h2><?php _e('CF7 to Spreadsheet','cf-7-to-spreadsheet')?></h2>
 		<table class="form-table">
 	    	<tr valign="top">
 	        	<th scope="row"><?php _e( 'Google Spreadsheet Name','cf-7-to-spreadsheet' ); ?></th>
@@ -15,3 +17,4 @@
 	    </table>
   	</form>
 </div>
+
