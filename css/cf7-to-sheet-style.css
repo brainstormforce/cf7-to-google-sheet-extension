@@ -2,3 +2,98 @@
 #contact-form-editor .cf7-fields .form-table th {
     width: 200px ;
 }
+
+/*Toggle button*/
+#mytoggle-button {
+    display: none;
+}
+.toggle-button {
+    position: relative;
+    -moz-user-select:none;
+    -ms-user-select: none;
+    -webkit-user-select:none;
+    width: 90px;
+}
+.toggle-button-checkbox {
+    display: none;
+}
+.toggle-button-label {
+    border: 2px solid #999999;
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+}
+.toggle-button-inner {
+    display: block;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+    -webkit-transition: margin 0.3s ease-in 0s;
+    width: 200%;
+}
+.toggle-button-inner:before,
+.toggle-button-inner:after {
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    width: 50%;
+}
+.toggle-button-inner:before {
+    background-color: #0085ba;
+    color: #FFFFFF;
+    content: "YES";
+    padding-left: 10px;
+}
+.toggle-button-inner:after {
+    background-color: #eee;
+    color: #999999;
+    content: "NO";
+    padding-right: 10px;
+    text-align: right;
+}
+.toggle-button-switch {
+    background: #FFFFFF;
+    border: 2px solid #999999;
+    bottom: 0;
+    border-radius: 20px;
+    display: block;
+    margin: 6px;
+    position: absolute;
+    right: 56px;
+    top: 0;
+    transition: all 0.3s ease-in 0s; 
+    -webkit-transition: all 0.3s ease-in 0s;
+    width: 18px;
+}
+.toggle-button-checkbox:checked + .toggle-button-label .toggle-button-inner {
+    margin-left: 0;
+}
+.toggle-button-checkbox:checked + .toggle-button-label .toggle-button-switch {
+    right: 0; 
+}
+
+/*For status check*/
+.status-check .dashicons.activate,
+.status-check .dashicons.not-activate{
+    position: relative;
+    bottom: 3px;
+    font-size: 30px;
+    margin: 0 10px;
+}
+.status-check .dashicons.activate{
+    color: #4caf50;
+}
+.status-check .dashicons.not-activate{
+    color: #f44336;
+}
+span.green {
+    color: #4caf50;   
+}
+span.red {
+    color: #f44336;   
+}
