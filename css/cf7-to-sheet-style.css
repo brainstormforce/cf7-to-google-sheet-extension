@@ -1,38 +1,37 @@
-
 #contact-form-editor .cf7-fields .form-table th {
-    width: 200px ;
+    width: 200px;
 }
-
 /*Toggle button*/
-#mytoggle-button {
+
+#cf7-toggle-button {
     display: none;
 }
-.toggle-button {
+.cf7-toggle-button {
     position: relative;
-    -moz-user-select:none;
+    -moz-user-select: none;
     -ms-user-select: none;
-    -webkit-user-select:none;
+    -webkit-user-select: none;
     width: 90px;
 }
-.toggle-button-checkbox {
+.cf7-toggle-button-checkbox {
     display: none;
 }
-.toggle-button-label {
+.cf7-toggle-button-label {
     border: 2px solid #999999;
     border-radius: 20px;
     cursor: pointer;
     display: block;
     overflow: hidden;
 }
-.toggle-button-inner {
+.cf7-toggle-button-inner {
     display: block;
     margin-left: -100%;
     transition: margin 0.3s ease-in 0s;
     -webkit-transition: margin 0.3s ease-in 0s;
     width: 200%;
 }
-.toggle-button-inner:before,
-.toggle-button-inner:after {
+.cf7-toggle-button-inner:before,
+.cf7-toggle-button-inner:after {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     display: block;
@@ -43,20 +42,20 @@
     padding: 0;
     width: 50%;
 }
-.toggle-button-inner:before {
+.cf7-toggle-button-inner:before {
     background-color: #0085ba;
     color: #FFFFFF;
     content: "YES";
     padding-left: 10px;
 }
-.toggle-button-inner:after {
+.cf7-toggle-button-inner:after {
     background-color: #eee;
     color: #999999;
     content: "NO";
     padding-right: 10px;
     text-align: right;
 }
-.toggle-button-switch {
+.cf7-toggle-button-switch {
     background: #FFFFFF;
     border: 2px solid #999999;
     bottom: 0;
@@ -66,34 +65,34 @@
     position: absolute;
     right: 56px;
     top: 0;
-    transition: all 0.3s ease-in 0s; 
+    transition: all 0.3s ease-in 0s;
     -webkit-transition: all 0.3s ease-in 0s;
     width: 18px;
 }
-.toggle-button-checkbox:checked + .toggle-button-label .toggle-button-inner {
+.cf7-toggle-button-checkbox:checked + .cf7-toggle-button-label .cf7-toggle-button-inner {
     margin-left: 0;
 }
-.toggle-button-checkbox:checked + .toggle-button-label .toggle-button-switch {
-    right: 0; 
+.cf7-toggle-button-checkbox:checked + .cf7-toggle-button-label .cf7-toggle-button-switch {
+    right: 0;
 }
-
 /*For status check*/
+
 .status-check .dashicons.activate,
-.status-check .dashicons.not-activate{
+.status-check .dashicons.not-activate {
     position: relative;
     bottom: 3px;
     font-size: 30px;
     margin: 0 10px;
 }
-.status-check .dashicons.activate{
+.status-check .dashicons.activate {
     color: #4caf50;
 }
-.status-check .dashicons.not-activate{
+.status-check .dashicons.not-activate {
     color: #f44336;
 }
-span.green {
-    color: #4caf50;   
+span.green-text {
+    color: #4caf50;
 }
-span.red {
-    color: #f44336;   
+span.red-text {
+    color: #f44336;
 }
