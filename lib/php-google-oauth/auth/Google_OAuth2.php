@@ -110,9 +110,7 @@ class Google_OAuth2 extends Google_Auth {
         if ($decodedResponse != null && $decodedResponse['error']) {
           $response = $decodedResponse['error'];
         }
-		ns_google_sheets_connector::ns_debug_log("Error fetching OAuth2 access token, message: '$response' :: {$request->getResponseHttpCode()}");
-		
-        throw new Google_AuthException("Error fetching OAuth2 access token, message: '$response'", $request->getResponseHttpCode());
+		 throw new Google_AuthException("Error fetching OAuth2 access token, message: '$response'", $request->getResponseHttpCode());
       }
     }
 
@@ -211,10 +209,7 @@ class Google_OAuth2 extends Google_Auth {
         $this->refreshTokenWithAssertion();
       } else {
         if (! array_key_exists('refresh_token', $this->token)) {
-			ns_google_sheets_connector::ns_debug_log("The OAuth 2.0 access token has expired, "
-                . "and a refresh token is not available. Refresh tokens are not "
-                . "returned for responses that were auto-approved.");
-            throw new Google_AuthException("The OAuth 2.0 access token has expired, "
+          throw new Google_AuthException("The OAuth 2.0 access token has expired, "
                 . "and a refresh token is not available. Refresh tokens are not "
                 . "returned for responses that were auto-approved.");
         }

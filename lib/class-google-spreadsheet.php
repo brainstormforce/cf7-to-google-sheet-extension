@@ -6,7 +6,7 @@ require_once ( plugin_dir_path(__FILE__) . 'autoload.php' );
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
 
-class google_spreadsheet {
+class Cf7_Google_Spreadsheet {
 	private $token;
 	private $spreadsheet;
 	private $worksheet;
@@ -15,28 +15,43 @@ class google_spreadsheet {
 	const redirect = 'urn:ietf:wg:oauth:2.0:oob';
 
 	/**
+	* Function Name: google_connect_url
+	* Function Description: Generate google connect url.
+	*/
+	public static function google_connect_url () {
+		$google_url  = '';
+		$google_url .= 'https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&';
+		$google_url .= 'client_id='.Cf7_Google_Spreadsheet::clientId;
+		$google_url .= '&redirect_uri='.Cf7_Google_Spreadsheet::redirect;
+		$google_url .= '&state&scope=https://spreadsheets.google.com/feeds';
+		return $google_url;
+	}
+
+	/**
 	* Function Name: google_pre_authentication
 	* Function Description: Pre-authenticate entered access code.
 	* @param object $access_code
 	*/
-
-	public static function google_pre_authentication( $access_code ) {		
+	public static function google_pre_authentication( $access_code ) {
 		$client = new Google_Client();
-		$client->setClientId( google_spreadsheet::clientId );
-		$client->setClientSecret( google_spreadsheet::clientSecret );
-		$client->setRedirectUri( google_spreadsheet::redirect );
+		$client->setClientId( Cf7_Google_Spreadsheet::clientId );
+		$client->setClientSecret( Cf7_Google_Spreadsheet::clientSecret );
+		$client->setRedirectUri( Cf7_Google_Spreadsheet::redirect );
 		$client->setScopes( array( 'https://spreadsheets.google.com/feeds' ) );
+		try{
 		$results = $client->authenticate( $access_code );
+		}
+		catch(Exception $e) {
+			return '<span style="color:red;position:relative; left:170px">Error: ' .$e->getMessage().'</span>';
+		}
 		$token_data = json_decode( $client->getAccessToken(), true );
-		google_spreadsheet::update_token( $token_data );
+		Cf7_Google_Spreadsheet::update_token( $token_data );
 	}
-	
 	/**
 	* Function Name: update_token
 	* Function Description: Updating access token .
 	* @param object $token_data
 	*/
-
 	public static function update_token( $token_data ) {
 		$token_data['expire'] = time() + intval( $token_data['expires_in'] );
 		try{
@@ -51,16 +66,15 @@ class google_spreadsheet {
 	* Function Name: google_authentication
 	* Function Description: Authenticate before sending data to spreadsheet.
 	*/
-
 	public function google_authentication() {
 		$token_data = json_decode( get_option( 'cf7_to_spreadsheet_google_token' ), true );	
 		if( time() > $token_data['expire'] ) {
 			$client = new Google_Client();
-			$client->setClientId( google_spreadsheet::clientId );
-			$client->setClientSecret( google_spreadsheet::clientSecret );
+			$client->setClientId( Cf7_Google_Spreadsheet::clientId );
+			$client->setClientSecret( Cf7_Google_Spreadsheet::clientSecret );
 			$client->refreshToken( $token_data[ 'refresh_token' ] );
 			$token_data = array_merge( $token_data, json_decode( $client->getAccessToken(), true ) );
-			google_spreadsheet::update_token( $token_data );
+			Cf7_Google_Spreadsheet::update_token( $token_data );
 		}
 		$accessToken = $token_data[ 'access_token' ];
 		$serviceRequest = new DefaultServiceRequest( $accessToken );
