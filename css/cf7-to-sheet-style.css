@@ -1,6 +1,9 @@
 #contact-form-editor .cf7-fields .form-table th {
     width: 200px;
 }
+.access-code-input-box {
+    width: 300px;
+}
 /*Toggle button*/
 
 #cf7-toggle-button {
@@ -77,22 +80,22 @@
 }
 /*For status check*/
 
-.status-check .dashicons.activate,
-.status-check .dashicons.not-activate {
+.cf7-status-check .dashicons.activate,
+.cf7-status-check .dashicons.not-activate {
     position: relative;
     bottom: 3px;
     font-size: 30px;
     margin: 0 10px;
 }
-.status-check .dashicons.activate {
+.cf7-status-check .dashicons.activate {
     color: #4caf50;
 }
-.status-check .dashicons.not-activate {
+.cf7-status-check .dashicons.not-activate {
     color: #f44336;
 }
-span.green-text {
+span.cf7-green-text {
     color: #4caf50;
 }
-span.red-text {
+span.cf7-red-text {
     color: #f44336;
 }
