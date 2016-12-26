@@ -161,14 +161,14 @@ if( !class_exists( "Cf7_to_Spreadsheet" ) ) {
 		* @param object $cf7data
 		*/
 		public function send_data( $cf7data ) {
-			$submission      = WPCF7_Submission::get_instance();
-			$cf7_form_id     = $cf7data->id();
-			$speadsheet_data = get_post_meta( $cf7_form_id, 'cf7_to_spreadsheet_data' );
-			$sheet_name      = $speadsheet_data[0][ 'sheet-name' ];
-			$sheet_tab_name  = $speadsheet_data[0][ 'sheet-tab-name' ];
-			$toggle_button   = $speadsheet_data[0][ 'checked' ];
-			$cf7_form_data 	 = array();
-			if ( $submission && $toggle_button == 'on' ) {
+			$submission      	= WPCF7_Submission::get_instance();
+			$cf7_form_id     	= $cf7data->id();
+			$speadsheet_data 	= get_post_meta( $cf7_form_id, 'cf7_to_spreadsheet_data' );
+			$sheet_name      	= $speadsheet_data[0][ 'sheet-name' ];
+			$sheet_tab_name  	= $speadsheet_data[0][ 'sheet-tab-name' ];
+			$cf7_toggle_button  = $speadsheet_data[0][ 'checked' ];
+			$cf7_form_data 	 	= array();
+			if ( $submission && isset( $cf7_toggle_button )) {
 				$posted_data = $submission->get_posted_data();
 				$doc = new Cf7_Google_Spreadsheet();
 				$doc->google_authentication();
@@ -180,7 +180,7 @@ if( !class_exists( "Cf7_to_Spreadsheet" ) ) {
 				$worksheetFeed         = $spreadsheet->getWorksheets();
 				$worksheet             = $worksheetFeed->getByTitle( $sheet_tab_name );
 				// adding date coloumn to  your spreadsheet
-				$cf7_form_data['date'] = date('n F Y');
+				$cf7_form_data['date'] = date('j F Y');
 				foreach ( $posted_data as $key => $value ) {
 					// exclude the default wpcf7 fields in object
 					// handle strings and array elements

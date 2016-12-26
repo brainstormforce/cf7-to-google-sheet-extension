@@ -19,12 +19,12 @@ class Cf7_Google_Spreadsheet {
 	* Function Description: Generate google connect url.
 	*/
 	public static function google_connect_url () {
-		$google_url  = '';
-		$google_url .= 'https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&';
-		$google_url .= 'client_id='.Cf7_Google_Spreadsheet::clientId;
-		$google_url .= '&redirect_uri='.Cf7_Google_Spreadsheet::redirect;
-		$google_url .= '&state&scope=https://spreadsheets.google.com/feeds';
-		return $google_url;
+		$cf7_google_url  = '';
+		$cf7_google_url .= 'https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&';
+		$cf7_google_url .= 'client_id='.Cf7_Google_Spreadsheet::clientId;
+		$cf7_google_url .= '&redirect_uri='.Cf7_Google_Spreadsheet::redirect;
+		$cf7_google_url .= '&state&scope=https://spreadsheets.google.com/feeds';
+		return $cf7_google_url;
 	}
 
 	/**
@@ -42,7 +42,8 @@ class Cf7_Google_Spreadsheet {
 		$results = $client->authenticate( $access_code );
 		}
 		catch(Exception $e) {
-			return '<span style="color:red;position:relative; left:170px">Error: ' .$e->getMessage().'</span>';
+			global $error_message_code;
+			$error_message_code = '<span style="color:red;">Error: Entered code is incorrect, please enter a valid code.</span></br> </br>';
 		}
 		$token_data = json_decode( $client->getAccessToken(), true );
 		Cf7_Google_Spreadsheet::update_token( $token_data );
