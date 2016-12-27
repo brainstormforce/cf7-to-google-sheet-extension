@@ -21,7 +21,6 @@
 			</tr>
 		</table>
 		<div id="cf7-enable_spreadsheet" <?php if ( !isset( $spreadsheet_data[0]['checked'] ) ) echo 'style="display:none;"'; ?> >
-			<p> <a href="<?php echo esc_url('http://docs.sharkz.in/how-to-configure-your-spreadsheet-with-cf7-to-spreadsheet-plugin/') ?>" target='_blank'> <?php _e('How to configure your Spreadsheet?','cf-7-to-spreadsheet' )?> </a> </p>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Google Spreadsheet Name','cf-7-to-spreadsheet' ); ?></th>
@@ -35,6 +34,8 @@
 				</td>
 				</tr>
 			</table>
+			<p> <a href="<?php echo esc_url('https://docs.brainstormforce.com/how-to-configure-your-spreadsheet-with-cf7-to-spreadsheet-plugin/') ?>" target='_blank'> <?php _e('How to configure your Spreadsheet?','cf-7-to-spreadsheet' )?> </a> </p>
+
 		</div>
 	</form>
 </div>

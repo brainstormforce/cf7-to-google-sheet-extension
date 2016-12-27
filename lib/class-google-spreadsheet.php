@@ -10,9 +10,9 @@ class Cf7_Google_Spreadsheet {
 	private $token;
 	private $spreadsheet;
 	private $worksheet;
-	const clientId = '448551536053-e36uicg9npg51m0e89kb51i37b6741fq.apps.googleusercontent.com';
+	const clientId     = '448551536053-e36uicg9npg51m0e89kb51i37b6741fq.apps.googleusercontent.com';
 	const clientSecret = 'kIAz_RGoD6hSGZyYKmIaSZGh';
-	const redirect = 'urn:ietf:wg:oauth:2.0:oob';
+	const redirect     = 'urn:ietf:wg:oauth:2.0:oob';
 
 	/**
 	* Function Name: google_connect_url

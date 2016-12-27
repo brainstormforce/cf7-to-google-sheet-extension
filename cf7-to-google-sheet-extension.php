@@ -71,9 +71,16 @@ if( !class_exists( "Cf7_to_Spreadsheet" ) ) {
 		*/
 		public function confirm_cf7_activate() {
 			if ( !function_exists( 'wpcf7' ) ) {
-				$network_url = network_admin_url( 'plugin-install.php?s=contact+form+7&tab=search&type=term' );
-				echo '<div class="error"><p>CF7 to Spreadsheet requires <a href=".$network_url."> Contact Form7</a> is installed and activated. </p></div>';
-			}	
+			$cf7_search_url = network_admin_url( 'plugin-install.php?s=contact+form+7&tab=search&type=term' );
+				echo '<div class="error notice"><p>CF7 to Spreadsheet requires <a href='.$cf7_search_url.'>Contact Form7</a>  installed and activated. </p>
+				</div>';
+			}
+			if ( get_option( 'cf7_to_spreadsheet_google_token' ) == '' ) {
+				$cf7_settings_url = admin_url( 'options-general.php?page=cf7-to-spreadsheet' );
+
+				echo '<div class="update-nag notice"><p>CF7 to Spreadsheet needs to connect with <a href='.$cf7_settings_url.'>Google Spreadsheet Account</a>. </p>
+				</div>';
+			}
 		}
 
 		/**
