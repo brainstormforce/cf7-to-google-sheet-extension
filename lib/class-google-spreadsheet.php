@@ -1,7 +1,7 @@
 <?php
 
 require_once plugin_dir_path(__FILE__).'php-google-oauth/Google_Client.php';
-require_once ( plugin_dir_path(__FILE__) . 'autoload.php' );
+require_once plugin_dir_path(__FILE__) . 'autoload.php';
 
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
