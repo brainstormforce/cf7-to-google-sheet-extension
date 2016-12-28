@@ -1,0 +1,104 @@
+#contact-form-editor .cgs-fields .form-table th {
+    width: 200px;
+}
+.access-code-input-box {
+    width: 300px;
+}
+.update-nag.notice.csg-notice {
+    display: table-cell;
+}
+/*Toggle button*/
+
+#cgs-toggle-button {
+    display: none;
+}
+.cgs-toggle-button {
+    position: relative;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    width: 90px;
+}
+.cgs-toggle-button-checkbox {
+    display: none;
+}
+.cgs-toggle-button-label {
+    border: 2px solid #999999;
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+}
+.cgs-toggle-button-inner {
+    display: block;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+    -webkit-transition: margin 0.3s ease-in 0s;
+    width: 200%;
+}
+.cgs-toggle-button-inner:before,
+.cgs-toggle-button-inner:after {
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    width: 50%;
+}
+.cgs-toggle-button-inner:before {
+    background-color: #0085ba;
+    color: #FFFFFF;
+    content: "YES";
+    padding-left: 10px;
+}
+.cgs-toggle-button-inner:after {
+    background-color: #eee;
+    color: #999999;
+    content: "NO";
+    padding-right: 10px;
+    text-align: right;
+}
+.cgs-toggle-button-switch {
+    background: #FFFFFF;
+    border: 2px solid #999999;
+    bottom: 0;
+    border-radius: 20px;
+    display: block;
+    margin: 6px;
+    position: absolute;
+    right: 56px;
+    top: 0;
+    transition: all 0.3s ease-in 0s;
+    -webkit-transition: all 0.3s ease-in 0s;
+    width: 18px;
+}
+.cgs-toggle-button-checkbox:checked + .cgs-toggle-button-label .cgs-toggle-button-inner {
+    margin-left: 0;
+}
+.cgs-toggle-button-checkbox:checked + .cgs-toggle-button-label .cgs-toggle-button-switch {
+    right: 0;
+}
+/*For status check*/
+
+.cgs-status-check .dashicons.activate,
+.cgs-status-check .dashicons.not-activate {
+    position: relative;
+    bottom: 3px;
+    font-size: 30px;
+    margin: 0 10px;
+}
+.cgs-status-check .dashicons.activate {
+    color: #4caf50;
+}
+.cgs-status-check .dashicons.not-activate {
+    color: #f44336;
+}
+span.cgs-green-text {
+    color: #4caf50;
+}
+span.cgs-red-text {
+    color: #f44336;
+}

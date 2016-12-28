@@ -1,12 +1,12 @@
 <?php
 
-require_once plugin_dir_path(__FILE__).'php-google-oauth/Google_Client.php';
-require_once ( plugin_dir_path(__FILE__) . 'autoload.php' );
+require_once plugin_dir_path(__FILE__).'lib/php-google-oauth/Google_Client.php';
+require_once ( plugin_dir_path(__FILE__) . 'lib/autoload.php' );
 
 use Google\Spreadsheet\DefaultServiceRequest;
 use Google\Spreadsheet\ServiceRequestFactory;
 
-class Cf7_Google_Spreadsheet {
+class Cgs_Google_Spreadsheet {
 	private $token;
 	private $spreadsheet;
 	private $worksheet;
@@ -21,8 +21,8 @@ class Cf7_Google_Spreadsheet {
 	public static function google_connect_url () {
 		$cf7_google_url  = '';
 		$cf7_google_url .= 'https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&';
-		$cf7_google_url .= 'client_id='.Cf7_Google_Spreadsheet::clientId;
-		$cf7_google_url .= '&redirect_uri='.Cf7_Google_Spreadsheet::redirect;
+		$cf7_google_url .= 'client_id='.Cgs_Google_Spreadsheet::clientId;
+		$cf7_google_url .= '&redirect_uri='.Cgs_Google_Spreadsheet::redirect;
 		$cf7_google_url .= '&state&scope=https://spreadsheets.google.com/feeds';
 		return $cf7_google_url;
 	}
@@ -34,9 +34,9 @@ class Cf7_Google_Spreadsheet {
 	*/
 	public static function google_pre_authentication( $access_code ) {
 		$client = new Google_Client();
-		$client->setClientId( Cf7_Google_Spreadsheet::clientId );
-		$client->setClientSecret( Cf7_Google_Spreadsheet::clientSecret );
-		$client->setRedirectUri( Cf7_Google_Spreadsheet::redirect );
+		$client->setClientId( Cgs_Google_Spreadsheet::clientId );
+		$client->setClientSecret( Cgs_Google_Spreadsheet::clientSecret );
+		$client->setRedirectUri( Cgs_Google_Spreadsheet::redirect );
 		$client->setScopes( array( 'https://spreadsheets.google.com/feeds' ) );
 		try{
 		$results = $client->authenticate( $access_code );
@@ -46,7 +46,7 @@ class Cf7_Google_Spreadsheet {
 			$error_message_code = '<span style="color:red;">Error: Entered code is incorrect, please enter a valid code.</span></br> </br>';
 		}
 		$token_data = json_decode( $client->getAccessToken(), true );
-		Cf7_Google_Spreadsheet::update_token( $token_data );
+		Cgs_Google_Spreadsheet::update_token( $token_data );
 	}
 	/**
 	* Function Name: update_token
@@ -71,11 +71,11 @@ class Cf7_Google_Spreadsheet {
 		$token_data = json_decode( get_option( 'cf7_to_spreadsheet_google_token' ), true );	
 		if( time() > $token_data['expire'] ) {
 			$client = new Google_Client();
-			$client->setClientId( Cf7_Google_Spreadsheet::clientId );
-			$client->setClientSecret( Cf7_Google_Spreadsheet::clientSecret );
+			$client->setClientId( Cgs_Google_Spreadsheet::clientId );
+			$client->setClientSecret( Cgs_Google_Spreadsheet::clientSecret );
 			$client->refreshToken( $token_data[ 'refresh_token' ] );
 			$token_data = array_merge( $token_data, json_decode( $client->getAccessToken(), true ) );
-			Cf7_Google_Spreadsheet::update_token( $token_data );
+			Cgs_Google_Spreadsheet::update_token( $token_data );
 		}
 		$accessToken = $token_data[ 'access_token' ];
 		$serviceRequest = new DefaultServiceRequest( $accessToken );
