@@ -34,7 +34,7 @@
 				</td>
 				</tr>
 			</table>
-			<p> <a href="<?php echo esc_url('https://docs.brainstormforce.com/how-to-configure-your-spreadsheet-with-cf7-to-spreadsheet-plugin/') ?>" target='_blank'> <?php _e('How to configure your Spreadsheet?','cf-7-to-spreadsheet' )?> </a> </p>
+			<p> <a href="<?php  echo esc_url( cf7_documentation_url ) ?>" target='_blank'> <?php _e('How to configure your Spreadsheet?','cf-7-to-spreadsheet' )?> </a> </p>
 
 		</div>
 	</form>

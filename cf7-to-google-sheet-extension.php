@@ -37,6 +37,7 @@ if( !class_exists( "Cf7_to_Spreadsheet" ) ) {
 			add_action('wpcf7_after_save', array ( $this,'save_settings' ) );
 			// Add data to spreadsheet after Contact Form 7 mail sent
 			add_action( 'wpcf7_mail_sent', array ( $this,'send_data' ) );
+			define( 'cf7_documentation_url', 'https://docs.brainstormforce.com/how-to-configure-your-spreadsheet-with-cf7-to-spreadsheet-plugin/' );
 		}
 
 		/**
