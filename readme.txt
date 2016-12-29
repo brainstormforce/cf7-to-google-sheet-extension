@@ -32,9 +32,6 @@ This is a simple way to maintain your contact form 7 data backup.
 * Create or Edit the Contact Form 7 form from which you want to capture the data. Set up the form as usual in the Form and Mail etc tabs. Thereafter, go to the new "CF7 to Spreadsheet" tab.  
 * On the "CF7 to Spreadsheet" tab, copy-paste the Google Spreadsheets sheet name and tab name into respective positions, and hit "Save".
 
-= Important Notes = 
-
-* You must pay very careful attention to your naming. This plugin will have unpredictable results if names and spellings do not match between your Google Spreadsheets and form settings. Also, naming is not case sensitive.
 
 == Installation ==
 
