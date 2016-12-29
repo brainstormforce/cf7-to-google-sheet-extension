@@ -1,27 +1,26 @@
 <!-- Contact form7 editor panel tab html form -->
 <?php 
-	$cf7_form_id   = sanitize_text_field( $_GET['post'] );
-	$spreadsheet_data = get_post_meta( $cf7_form_id, 'cf7_to_spreadsheet_data' ); 
+	$cgs_form_id   = sanitize_text_field( $_GET['post'] );
+	$spreadsheet_data = get_post_meta( $cgs_form_id, 'cf7_to_spreadsheet_data' ); 
 ?>
-<div class="wrap cf7-fields">
+<div class="wrap cgs-fields">
 	<form  method="post" class="container">
 		<table class="form-table">
 			<h2><?php _e( 'CF7 to Spreadsheet','cf-7-to-spreadsheet' ); ?></h2>
 			<tr valign="top">
 				<th scope="row"><?php _e( 'Send data to Spreadsheet','cf-7-to-spreadsheet' )?> </th>
 				<td>
-					<div class="cf7-toggle-button">
-						<input type="checkbox" name="cf7-sheet[checked]" class="cf7-toggle-button-checkbox" id="cf7-toggle-button" value="1" <?php checked( isset($spreadsheet_data[0]['checked']), 1 ); ?>/>
-						<label class="cf7-toggle-button-label" for="cf7-toggle-button">
-							<span class="cf7-toggle-button-inner"></span>
-							<span class="cf7-toggle-button-switch"></span>
+					<div class="cgs-toggle-button">
+						<input type="checkbox" name="cf7-sheet[checked]" class="cgs-toggle-button-checkbox" id="cgs-toggle-button" value="1" <?php checked( isset($spreadsheet_data[0]['checked']), 1 ); ?>/>
+						<label class="cgs-toggle-button-label" for="cgs-toggle-button">
+							<span class="cgs-toggle-button-inner"></span>
+							<span class="cgs-toggle-button-switch"></span>
 						</label>
 					</div>
 				</td>
 			</tr>
 		</table>
-		<div id="cf7-enable_spreadsheet" <?php if ( !isset( $spreadsheet_data[0]['checked'] ) ) echo 'style="display:none;"'; ?> >
-			<p> <a href="<?php echo esc_url('http://docs.sharkz.in/how-to-configure-your-spreadsheet-with-cf7-to-spreadsheet-plugin/') ?>" target='_blank'> <?php _e('How to configure your Spreadsheet?','cf-7-to-spreadsheet' )?> </a> </p>
+		<div id="cgs-enable_spreadsheet" <?php if ( !isset( $spreadsheet_data[0]['checked'] ) ) echo 'style="display:none;"'; ?> >
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Google Spreadsheet Name','cf-7-to-spreadsheet' ); ?></th>
@@ -35,6 +34,8 @@
 				</td>
 				</tr>
 			</table>
+			<p> <a href="<?php  echo esc_url( CGS_DOC_URL ) ?>" target='_blank'> <?php _e('How to configure your Spreadsheet?','cf-7-to-spreadsheet' )?> </a> </p>
+
 		</div>
 	</form>
 </div>
