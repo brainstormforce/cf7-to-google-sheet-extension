@@ -3,7 +3,7 @@
 <div class="wrap cgs-status-check">
 	<h1><?php _e( 'CF7 to Spreadsheet Settings','cf-7-to-spreadsheet' ); ?></h1> </br>
 	<form action="" method="post" class="container">
-		<h4> <?php  _e( 'This setting is required if you wish to use Spreadsheet.Need help to get Google Spreadsheet API key? Read <a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects" target="_blank">this article</a> ','cf-7-to-spreadsheet' ); ?></h4>
+		<h4> <?php  _e( 'Click  <a href="https://developers.google.com/sheets/api/quickstart/php" target="_blank"> here </a>  for generate Client ID and Client Secret ','cf-7-to-spreadsheet' ); ?></h4>
 		<table class="form-table">
 			<tr>
 				<th scope="row">

@@ -3,7 +3,7 @@ Contributors: brainstormforce, abhishilawat
 Donate link: https://www.brainstormforce.com/payment/
 Tags: google, sheets, spreadsheets, google sheets, google spreadsheets,  cf7, contact form 7, data, form, form data
 Requires at least: 4.4
-Tested up to: 4.8.1
+Tested up to: 4.9.8
 Stable tag: 1.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,7 +29,7 @@ This is a simple way to maintain your contact form 7 data backup.
 
 * Process to generate API key 
 
-* Follow the steps from this url to create a project: https://cloud.google.com/resource-manager/docs/creating-managing-projects(‘Creating a project’ section)
+* Follow the steps from this url to create a project: https://developers.google.com/sheets/api/quickstart/php
 * After the project is created, go to Quotas tab, click on “Google sheet Api” and then on Credentials
 * Press Create Credentials
 * Select OAuth client ID
@@ -62,5 +62,6 @@ This is a simple way to maintain your contact form 7 data backup.
 
 = 1.0.0 =
 * Initial release
+
 = 1.1.0
-- Improvement:Added Input Fields for API key in setting page.
+- Improvement:Added Input Fields for API key in pluign admin panel.
