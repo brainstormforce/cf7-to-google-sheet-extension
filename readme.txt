@@ -4,7 +4,7 @@ Donate link: https://www.brainstormforce.com/payment/
 Tags: google, sheets, spreadsheets, google sheets, google spreadsheets,  cf7, contact form 7, data, form, form data
 Requires at least: 4.4
 Tested up to: 4.8.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -26,6 +26,17 @@ This is a simple way to maintain your contact form 7 data backup.
 * Create a new Sheet and name it.  
 * Rename the tab on which you want to capture the data.
 * In the Google sheets tab, provide column names in row 1. The first column should be "date" if you want to add date. For each further column, copy paste mail tags from the Contact Form 7 form (e.g. "your-name", "your-email", "your-subject", "your-message", etc). Also, you can add required mail tags (e.g "your-name", "your-email").
+
+* Process to generate API key 
+
+* Follow the steps from this url to create a project: https://cloud.google.com/resource-manager/docs/creating-managing-projects(‘Creating a project’ section)
+* After the project is created, go to Quotas tab, click on “Google sheet Api” and then on Credentials
+* Press Create Credentials
+* Select OAuth client ID
+* Select Other, give it a name and Save
+* You’ll get a popup with client Id and client secret
+* Copy/paste those on lines 13 and 14 (see above)
+* You need to Reconnect the plugin – go to Wp Admin/Settings/CF7 to Spreadsheet/Press “Reconnect with google Spreadsheet
 
 *In WordPress Admin*
   
@@ -51,3 +62,5 @@ This is a simple way to maintain your contact form 7 data backup.
 
 = 1.0.0 =
 * Initial release
+= 1.1.0
+- Improvement:Added Input Fields for API key in setting page.

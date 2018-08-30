@@ -2,6 +2,35 @@
 <?php $get_token = json_decode( get_option('cf7_to_spreadsheet_google_token'),true );  ?>
 <div class="wrap cgs-status-check">
 	<h1><?php _e( 'CF7 to Spreadsheet Settings','cf-7-to-spreadsheet' ); ?></h1> </br>
+	<form action="" method="post" class="container">
+		<h4> <?php  _e( 'This setting is required if you wish to use Spreadsheet.Need help to get Google Spreadsheet API key? Read <a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects" target="_blank">this article</a> ','cf-7-to-spreadsheet' ); ?></h4>
+		<table class="form-table">
+			<tr>
+				<th scope="row">
+					<label for="clientid">Client Id</label>
+				</th>
+				<td><input name="clientid" type="text" id="clientid" value="<?php echo get_option('clientidkey');?>" class="regular-text"></td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="clientsecret">Client Secret</label>
+				</th>
+				<td>
+					<input name="clientsecret" type="text" id="clientsecret" value="<?php echo get_option('clientsecretkey');?>" class="regular-text">
+				</td>
+			</tr>
+		</table>
+		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
+	</form>
+	<?php
+			if( isset($_POST['clientid'] ) && $_POST['clientid']!==''){
+
+				update_option( 'clientidkey',$_POST['clientid'] );
+			}
+			if( isset($_POST['clientsecret'] ) && $_POST['clientsecret']!==''){
+				update_option( 'clientsecretkey',$_POST['clientsecret'] );
+			}
+		?>
 	<form  action="options.php" method="post" class="container">
 		<?php settings_fields( 'cf7_to_spreadsheet_plugin_setting' ); ?>
 		<?php do_settings_sections( 'cf7_to_spreadsheet_plugin_setting' ); ?>

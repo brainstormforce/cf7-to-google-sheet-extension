@@ -3,7 +3,7 @@
 Plugin Name: 	CF7 to Spreadsheet
 Plugin URI: 	http://www.brainstormforce.com
 Description: 	Save your Contact Form 7 data to Google Spreadsheet.
-Version: 		1.0
+Version: 		1.1.0
 Author: 		Brainstorm Force     
 Author URI:		https://www.brainstormforce.com/
 Text Domain: 	cf-7-to-spreadsheet
