@@ -64,4 +64,4 @@ This is a simple way to maintain your contact form 7 data backup.
 * Initial release
 
 = 1.1.0
-- Improvement:Added Input Fields for API key in pluign admin panel.
+- Improvement:Added Input Fields for API key in plugin admin panel.
