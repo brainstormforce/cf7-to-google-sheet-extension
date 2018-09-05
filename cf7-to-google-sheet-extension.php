@@ -108,6 +108,8 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 		*/
 		public function admin_init_register_setting() {
 			register_setting( 'cf7_to_spreadsheet_plugin_setting', 'cf7_to_spreadsheet_google_code' );
+			register_setting( 'cf7_to_spreadsheet_plugin_setting_api', 'clientid');	
+			register_setting( 'cf7_to_spreadsheet_plugin_setting_api', 'clientsecret');
 		}
 
 		/**

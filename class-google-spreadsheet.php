@@ -48,22 +48,22 @@ if ( ! class_exists( 'Cgs_Google_Spreadsheet' ) ) {
 		* Function Description: Get the api key from database.
 		*/
 		public static function get_api_key(){
-			$clientid = get_option('clientidkey');
-			$clientsecret = get_option('clientsecretkey');
-			if(!empty($clientid))
-			{
+			$clientid = get_option('clientid');
+			$clientsecret = get_option('clientsecret');
+
+			if(!empty($clientid) && !empty($clientsecret)){
 				$data['clientid'] = $clientid;
+				$data['clientsecret'] = $clientsecret;
+				return $data ;
 			}
-			if(!empty($clientsecret)){
-				$data['clientsecret'] = $clientsecret; 
-			}
-			return $data ;
+			
 		}
 		/**
 		* Function Name: google_connect_url
 		* Function Description: Generate google connect url.
 		*/
 		public static function google_connect_url () {
+			$client_data='';
 			$client_data = Cgs_Google_Spreadsheet::get_api_key();
 			$cf7_google_url  = '';
 			$cf7_google_url .= 'https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&';
@@ -79,6 +79,7 @@ if ( ! class_exists( 'Cgs_Google_Spreadsheet' ) ) {
 		* @param object $access_code
 		*/
 		public static function google_pre_authentication( $access_code ) {
+			$client_data ='';
 			$client_data = Cgs_Google_Spreadsheet::get_api_key();
 			$client = new Google_Client();
 			$client->setClientId( $client_data['clientid'] );
@@ -115,6 +116,7 @@ if ( ! class_exists( 'Cgs_Google_Spreadsheet' ) ) {
 		* Function Description: Authenticate before sending data to spreadsheet.
 		*/
 		public function google_authentication() {
+			$client_data='';
 			$client_data = Cgs_Google_Spreadsheet::get_api_key();
 			$token_data = json_decode( get_option( 'cf7_to_spreadsheet_google_token' ), true );	
 			if( time() > $token_data['expire'] ) {
