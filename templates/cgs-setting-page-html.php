@@ -3,7 +3,7 @@
 <div class="wrap cgs-status-check">
 	<h1><?php _e( 'CF7 to Spreadsheet Settings','cf-7-to-spreadsheet' ); ?></h1> </br>
 	<form action="" method="post" class="container">
-		<h4> <?php  _e( 'Click  <a href="https://developers.google.com/sheets/api/quickstart/php" target="_blank"> here </a>  for generate Client ID and Client Secret ','cf-7-to-spreadsheet' ); ?></h4>
+		<h4> <?php  _e( 'Click  <a href="https://docs.brainstormforce.com/create-google-sheet-api-key/" target="_blank"> here </a>  for generate Client ID and Client Secret ','cf-7-to-spreadsheet' ); ?></h4>
 		<table class="form-table">
 			<tr>
 				<th scope="row">

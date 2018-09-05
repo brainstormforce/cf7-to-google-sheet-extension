@@ -29,7 +29,7 @@ This is a simple way to maintain your contact form 7 data backup.
 
 * Process to generate API key 
 
-* Follow the steps from this url to create a project: https://developers.google.com/sheets/api/quickstart/php
+* Follow the steps from this url to create a project: https://docs.brainstormforce.com/create-google-sheet-api-key/
 * After the project is created, go to Quotas tab, click on “Google sheet Api” and then on Credentials
 * Press Create Credentials
 * Select OAuth client ID
