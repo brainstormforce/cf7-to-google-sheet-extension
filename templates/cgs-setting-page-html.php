@@ -3,10 +3,9 @@
 <div class="wrap cgs-status-check">
 	<h1><?php _e( 'CF7 to Spreadsheet Settings','cf-7-to-spreadsheet' ); ?></h1> </br>
 	<form action="options.php" method="post" class="container cgs-form-api">
-
 		<?php settings_fields( 'cf7_to_spreadsheet_plugin_setting_api' ); ?>
 		<?php do_settings_sections( 'cf7_to_spreadsheet_plugin_setting_api' ); ?>
-		<h3> <b> Step-1 </b></h3>
+		<h3> <b> Step-1 </b>  Generate API Key Configuration </h3>
 		<h4> <?php  _e( 'Click  <a href="https://docs.brainstormforce.com/create-google-sheet-api-key/" target="_blank"> here </a>  for generate Client ID and Client Secret ','cf-7-to-spreadsheet' ); ?></h4>
 		<table class="form-table">
 			<tr>
@@ -29,21 +28,20 @@
 	<form  action="options.php" method="post" class="container cgs-form-connect">
 		<?php settings_fields( 'cf7_to_spreadsheet_plugin_setting' ); ?>
 		<?php do_settings_sections( 'cf7_to_spreadsheet_plugin_setting' ); ?>
-		<h3> <b> Step-2 </b> </h3>
 		<?php if ( empty( get_option('clientsecret') ) || empty(get_option('clientid'))) { ?>
 				<?php update_option( 'cf7_to_spreadsheet_google_token', null ); ?>
-					<h2><?php _e( 'Google Spreadsheet Account', 'cf-7-to-spreadsheet') ?> <span class='dashicons dashicons-dismiss not-activate'></span><span class='cgs-red-text'><?php _e('Not Connected', 'cf-7-to-spreadsheet')?> </span></h2> </br>
+					<h2><?php _e( 'Google Spreadsheet Account', 'cf-7-to-spreadsheet') ?> <span class='dashicons dashicons-dismiss not-activate'></span><span class='cgs-red-text'><?php _e('Not Connected', 'cf-7-to-spreadsheet')?> </span></h2> 
 			<?php }
 			else { 
 				if ( empty( $get_token['access_token'] ) ) { ?>
-					<h2><?php _e( 'Google Spreadsheet Account', 'cf-7-to-spreadsheet') ?> <span class='dashicons dashicons-dismiss not-activate'></span><span class='cgs-red-text'><?php _e('Not Connected', 'cf-7-to-spreadsheet')?> </span></h2> </br>
+					<h2><?php _e( 'Google Spreadsheet Account', 'cf-7-to-spreadsheet') ?> <span class='dashicons dashicons-dismiss not-activate'></span><span class='cgs-red-text'><?php _e('Not Connected', 'cf-7-to-spreadsheet')?> </span></h2> 
 				<?php }
 				 else { ?>
-					<h2><?php _e( 'Google Spreadsheet Account', 'cf-7-to-spreadsheet') ?> <span class='dashicons dashicons-yes activate'></span><span class='cgs-green-text'><?php _e('Connected', 'cf-7-to-spreadsheet')?> </span></h2> </br>	
+					<h2><?php _e( 'Google Spreadsheet Account', 'cf-7-to-spreadsheet') ?> <span class='dashicons dashicons-yes activate'></span><span class='cgs-green-text'><?php _e('Connected', 'cf-7-to-spreadsheet')?> </span></h2>	
 				<?php }?>
 			<?php } ?>
-		<h4> <?php  _e( 'If you want to save data on Google Spreadsheet you would need to connect with Google Spreadsheet','cf-7-to-spreadsheet' ); ?></h4> </br>
-		<p> <b><?php  _e( 'Step1:','cf-7-to-spreadsheet' )?></b><?php  _e( 'Please click on[connect with Google Spreadsheet] and copy the code','cf-7-to-spreadsheet' ); ?></p>
+		<h3> <b> Step-2 </b> Connect With Google Spreadsheet  </h3>
+		<h4> <?php  _e( 'If you want to save data on Google Spreadsheet you would need to connect with Google Spreadsheet','cf-7-to-spreadsheet' ); ?></h4>
 		<?php
 		$google_url = Cgs_Google_Spreadsheet::google_connect_url();
 		global  $error_message_code;
@@ -58,10 +56,8 @@
 			else{
 				_e( 'Reconnect with Google Spreadsheet','cf-7-to-spreadsheet') ;
 			}
-		} ?> </a> </br> </br>
-		
+		} ?> </a>
 		<div id="cgs-setting-form">
-			<p> <b><?php  _e( 'Step2:','cf-7-to-spreadsheet' )?></b><?php  _e( 'Paste access code and save settings','cf-7-to-spreadsheet' ); ?></p>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row"> <?php _e( 'Google Access Code','cf-7-to-spreadsheet' ); ?></th>
