@@ -42,7 +42,7 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 				// Add data to spreadsheet after Contact Form 7 mail sent
 				add_action( 'wpcf7_mail_sent', array ( $this,'send_data' ) );
 				// Show notice to connect Google spreadsheet
-				add_action( 'admin_notices', array ( $this,'cgs_google_spreadsheet_notice' ) );
+				//add_action( 'admin_notices', array ( $this,'cgs_google_spreadsheet_notice' ) );
 			} else {
 				// Add admin notice for Contact Form 7 inactive
 				add_action( 'admin_notices', array ( $this,'confirm_cf7_activate' ) );
@@ -69,14 +69,14 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 		* Function Name: cgs_google_spreadsheet_notice
 		* Function Description: Notice for connecting to google spreadsheet account
 		*/
-		public function cgs_google_spreadsheet_notice() {
+		/*public function cgs_google_spreadsheet_notice() {
 			$get_token = json_decode( get_option('cf7_to_spreadsheet_google_token'),true );
 			if ( empty( $get_token['access_token'] ) ) {
 				$cf7_settings_url = admin_url( 'options-general.php?page=cf7-to-spreadsheet' );
 				echo '<div class="update-nag notice csg-notice"><p>CF7 to Spreadsheet needs to connect with <a href='.$cf7_settings_url.'>Google Spreadsheet Account</a>. </p>
 				</div>';
 			}
-		}
+		}*/
 
 		/**
 		* Function Name: register_setting
