@@ -102,3 +102,14 @@ span.cgs-green-text {
 span.cgs-red-text {
     color: #f44336;
 }
+.cgs-form-api{
+    background: #FFFFFF;
+    padding: 10px;
+    width:50%;
+}
+.cgs-form-connect{
+    background:#FFFFFF;
+    padding: 10px;
+    width:50%;
+    margin-top: 10px; 
+}
