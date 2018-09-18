@@ -43,12 +43,25 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 				add_action( 'wpcf7_mail_sent', array ( $this,'send_data' ) );
 				// Show notice to connect Google spreadsheet
 				//add_action( 'admin_notices', array ( $this,'cgs_google_spreadsheet_notice' ) );
+				// Show Settings Action Links
+				add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 			} else {
 				// Add admin notice for Contact Form 7 inactive
 				add_action( 'admin_notices', array ( $this,'confirm_cf7_activate' ) );
 			}
 		}
 
+		/**
+		* Function Name: confirm_cf7_activate
+		* Function Description: Add Action Links
+		*/
+		public function add_action_links($links)
+		{
+			$mylinks = 
+			array(
+ 				'<a href="' . admin_url( 'options-general.php?page=cf7-to-spreadsheet' ) . '"> Settings </a>');
+			return array_merge( $links, $mylinks );
+		}
 		/**
 		* Function Name: confirm_cf7_activate
 		* Function Description: Notice for contact form activation
