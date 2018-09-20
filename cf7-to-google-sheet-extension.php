@@ -57,10 +57,9 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 		*/
 		public function add_action_links($links)
 		{
-			$mylinks = 
-			array(
- 				'<a href="' . admin_url( 'options-general.php?page=cf7-to-spreadsheet' ) . '"> Settings </a>');
-			return array_merge( $links, $mylinks );
+			 $settings_link = '<a href="options-general.php?page=cf7-to-spreadsheet">Settings</a>'; 
+  				array_unshift($links, $settings_link); 
+  			return $links;
 		}
 		/**
 		* Function Name: confirm_cf7_activate
