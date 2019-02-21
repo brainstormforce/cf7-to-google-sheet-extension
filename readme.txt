@@ -1,10 +1,10 @@
 === CF7 to Spreadsheet ===
-Contributors: brainstormforce
+Contributors: brainstormforce, abhijitshilawat
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: google, sheets, spreadsheets, google sheets, google spreadsheets,  cf7, contact form 7, data, form, form data
 Requires at least: 4.4
-Tested up to: 5.1
-Stable tag: 1.0.0
+Tested up to: 5.0.3
+Stable tag: 1.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -51,3 +51,7 @@ This is a simple way to maintain your contact form 7 data backup.
 
 = 1.0.0 =
 * Initial release
+
+= 1.1.0 =
+* Fixed google authentication error
+* Save file link in spreadsheet (Files are saved in upload folder) 

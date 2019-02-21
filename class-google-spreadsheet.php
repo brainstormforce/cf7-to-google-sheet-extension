@@ -10,8 +10,8 @@ class Cgs_Google_Spreadsheet {
 	private $token;
 	private $spreadsheet;
 	private $worksheet;
-	const clientId     = '448551536053-e36uicg9npg51m0e89kb51i37b6741fq.apps.googleusercontent.com';
-	const clientSecret = 'kIAz_RGoD6hSGZyYKmIaSZGh';
+	const clientId     = '1027532064210-pgkk0gj7k7hm7e6sk7egcpovlriobr56.apps.googleusercontent.com';
+	const clientSecret = 'cFi_8fG9yB3NLfzFhml3x_oe';
 	const redirect     = 'urn:ietf:wg:oauth:2.0:oob';
 
 	/**
