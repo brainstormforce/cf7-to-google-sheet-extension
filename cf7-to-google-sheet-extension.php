@@ -3,7 +3,7 @@
 Plugin Name: 	CF7 to Spreadsheet
 Plugin URI: 	http://www.brainstormforce.com
 Description: 	Save your Contact Form 7 data to Google Spreadsheet.
-Version: 		1.0
+Version: 		1.1
 Author: 		Brainstorm Force     
 Author URI:		https://www.brainstormforce.com/
 Text Domain: 	cf-7-to-spreadsheet
@@ -207,16 +207,43 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 				$worksheet             = $worksheetFeed->getByTitle( $sheet_tab_name );
 				// adding date coloumn to  your spreadsheet
 				$cf7_form_data['date'] = date('j F Y');
+
+				$uploaded_files = array();
+				$uploaded_files = $submission->uploaded_files();
+
 				foreach ( $posted_data as $key => $value ) {
 					// exclude the default wpcf7 fields in object
 					// handle strings and array elements
-						if ( is_array( $value ) ) {
-							$cf7_form_data[$key] = implode( ',', $value );	
-						} else {
-							$cf7_form_data[$key] = $value;
-						}					
+					if ( is_array( $value ) ) {
+						$cf7_form_data[$key] = implode( ',', $value );	
+					} else {
+						$cf7_form_data[$key] = $value;
+					}					
+				}
+
+				if (count($uploaded_files) > 0) {
+					//Get upload dir URL
+					$upload_dir = wp_upload_dir();
+					//Create custom upload folder
+					$cf7d_upload_folder = 'cf7_spreadsheet_uploads';
+					$dir_upload = $upload_dir['basedir'] . '/' . $cf7d_upload_folder;
+					wp_mkdir_p($dir_upload);
+					//Get all uploaded files information
+					foreach ($uploaded_files as $k => $v) {
+						//Get file name
+						$file_name = basename($v);
+						//Create unique file name
+						$file_name = wp_unique_filename($dir_upload, $file_name);
+						//Setup filoe path
+						$dst_file = $dir_upload . '/' . $file_name;
+						//Copy file information in destination variable
+						if (@copy($v, $dst_file)){
+						//Setup customize file information in array
+							$cf7_form_data[$k] = $upload_dir['baseurl'] . '/' . $cf7d_upload_folder . '/' . $file_name;
+						}
 					}
-				// Inserting data to spreadsheet.
+				}
+        		// Inserting data to spreadsheet.
 				$listFeed = $worksheet->getListFeed();
 				$listFeed->insert( $cf7_form_data );
 			}
