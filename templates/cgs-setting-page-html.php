@@ -12,14 +12,14 @@
 				<th scope="row">
 					<label for="clientid">Client Id</label>
 				</th>
-				<td><input name="clientid" type="text" id="clientid" value="<?php echo get_option('clientid');?>" class="regular-text"></td>
+				<td><input name="cf7_to_spreadsheet_clientid" type="text" id="clientid" value="<?php echo get_option('cf7_to_spreadsheet_clientid');?>" class="regular-text"></td>
 			</tr>
 			<tr>
 				<th scope="row">
 					<label for="clientsecret">Client Secret</label>
 				</th>
 				<td>
-					<input name="clientsecret" type="text" id="clientsecret" value="<?php echo get_option('clientsecret');?>" class="regular-text">
+					<input name="cf7_to_spreadsheet_clientsecret" type="text" id="clientsecret" value="<?php echo get_option('cf7_to_spreadsheet_clientsecret');?>" class="regular-text">
 				</td>
 			</tr>
 		</table>
@@ -28,7 +28,7 @@
 	<form  action="options.php" method="post" class="container cgs-form-connect">
 		<?php settings_fields( 'cf7_to_spreadsheet_plugin_setting' ); ?>
 		<?php do_settings_sections( 'cf7_to_spreadsheet_plugin_setting' ); ?>
-		<?php if ( empty( get_option('clientsecret') ) || empty(get_option('clientid'))) { ?>
+		<?php if ( empty( get_option('cf7_to_spreadsheet_clientsecret') ) || empty(get_option('cf7_to_spreadsheet_clientid'))) { ?>
 				<?php update_option( 'cf7_to_spreadsheet_google_token', null ); ?>
 					<h2><?php _e( 'Google Spreadsheet Account', 'cf-7-to-spreadsheet') ?> <span class='dashicons dashicons-dismiss not-activate'></span><span class='cgs-red-text'><?php _e('Not Connected', 'cf-7-to-spreadsheet')?> </span></h2> 
 			<?php }
@@ -47,7 +47,7 @@
 		global  $error_message_code;
 		echo $error_message_code; 
 		echo '<a id="cgs-google-connect" class="button-primary"  href="'.$google_url.'" target="_blank" > ';
-		if ( empty( get_option('clientsecret') ) || empty(get_option('clientid'))) {
+		if ( empty( get_option('cf7_to_spreadsheet_clientsecret') ) || empty(get_option('cf7_to_spreadsheet_clientid'))) {
 			_e( 'Connect with Google Spreadsheet','cf-7-to-spreadsheet' );
 		} else { 
 			if( empty( $get_token['access_token'] )) {

@@ -3,7 +3,7 @@ Contributors: brainstormforce, abhishilawat
 Donate link: https://www.brainstormforce.com/payment/
 Tags: google, sheets, spreadsheets, google sheets, google spreadsheets,  cf7, contact form 7, data, form, form data
 Requires at least: 4.4
-Tested up to: 4.9.8
+Tested up to: 5.1.0
 Stable tag: 1.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -60,8 +60,8 @@ This is a simple way to maintain your contact form 7 data backup.
 
 == Changelog ==
 
+= 1.1.0 =
+- Improvement:Added Input Fields for API key in plugin admin panel.
+
 = 1.0.0 =
 * Initial release
-
-= 1.1.0
-- Improvement:Added Input Fields for API key in plugin admin panel.

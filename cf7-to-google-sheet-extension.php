@@ -55,8 +55,8 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 		*/
 		public function add_action_links($links)
 		{
-			 $settings_link = '<a href="options-general.php?page=cf7-to-spreadsheet">Settings</a>'; 
-  				array_unshift($links, $settings_link); 
+			$settings_link = '<a href="' . esc_url( admin_url( 'options-general.php?page=cf7-to-spreadsheet' ) ) . '">' . __( 'Settings', 'cf-7-to-spreadsheet' ) . '</a>';
+  			array_unshift($links, $settings_link); 
   			return $links;
 		}
 		/**
@@ -104,8 +104,8 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 		*/
 		public function admin_init_register_setting() {
 			register_setting( 'cf7_to_spreadsheet_plugin_setting', 'cf7_to_spreadsheet_google_code' );
-			register_setting( 'cf7_to_spreadsheet_plugin_setting_api', 'clientid');	
-			register_setting( 'cf7_to_spreadsheet_plugin_setting_api', 'clientsecret');
+			register_setting( 'cf7_to_spreadsheet_plugin_setting_api', 'cf7_to_spreadsheet_clientid');	
+			register_setting( 'cf7_to_spreadsheet_plugin_setting_api', 'cf7_to_spreadsheet_clientsecret');
 		}
 
 		/**

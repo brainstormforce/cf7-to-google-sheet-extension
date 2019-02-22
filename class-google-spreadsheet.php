@@ -48,8 +48,8 @@ if ( ! class_exists( 'Cgs_Google_Spreadsheet' ) ) {
 		* Function Description: Get the api key from database.
 		*/
 		public static function get_api_key(){
-			$clientid = get_option('clientid');
-			$clientsecret = get_option('clientsecret');
+			$clientid = get_option('cf7_to_spreadsheet_clientid');
+			$clientsecret = get_option('cf7_to_spreadsheet_clientsecret');
 
 			if(!empty($clientid) && !empty($clientsecret)){
 				$data['clientid'] = $clientid;
@@ -65,11 +65,13 @@ if ( ! class_exists( 'Cgs_Google_Spreadsheet' ) ) {
 		public static function google_connect_url () {
 			$client_data='';
 			$client_data = Cgs_Google_Spreadsheet::get_api_key();
-			$cf7_google_url  = '';
-			$cf7_google_url .= 'https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&';
-			$cf7_google_url .= 'client_id='.$client_data['clientid'];
-			$cf7_google_url .= '&redirect_uri='.Cgs_Google_Spreadsheet::redirect;
-			$cf7_google_url .= '&state&scope=https://spreadsheets.google.com/feeds';
+
+			$cf7_google_url = add_query_arg( array(
+    			'client_id' 	=> $client_data['clientid'],
+    			'redirect_uri' 	=> Cgs_Google_Spreadsheet::redirect,
+    			''				=> '&state&scope=https://spreadsheets.google.com/feeds',
+			), 'https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&' );
+
 			return $cf7_google_url;
 		}
 
