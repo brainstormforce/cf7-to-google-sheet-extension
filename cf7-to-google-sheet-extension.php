@@ -3,7 +3,7 @@
 Plugin Name: 	CF7 to Spreadsheet
 Plugin URI: 	http://www.brainstormforce.com
 Description: 	Save your Contact Form 7 data to Google Spreadsheet.
-Version: 		1.0
+Version: 		1.1.0
 Author: 		Brainstorm Force     
 Author URI:		https://www.brainstormforce.com/
 Text Domain: 	cf-7-to-spreadsheet
@@ -41,14 +41,24 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 				add_action('wpcf7_after_save', array ( $this,'save_settings' ) );
 				// Add data to spreadsheet after Contact Form 7 mail sent
 				add_action( 'wpcf7_mail_sent', array ( $this,'send_data' ) );
-				// Show notice to connect Google spreadsheet
-				add_action( 'admin_notices', array ( $this,'cgs_google_spreadsheet_notice' ) );
+				// Show Settings Action Links
+				add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 			} else {
 				// Add admin notice for Contact Form 7 inactive
 				add_action( 'admin_notices', array ( $this,'confirm_cf7_activate' ) );
 			}
 		}
 
+		/**
+		* Function Name: confirm_cf7_activate
+		* Function Description: Add Action Links
+		*/
+		public function add_action_links($links)
+		{
+			$settings_link = '<a href="' . esc_url( admin_url( 'options-general.php?page=cf7-to-spreadsheet' ) ) . '">' . __( 'Settings', 'cf-7-to-spreadsheet' ) . '</a>';
+  			array_unshift($links, $settings_link); 
+  			return $links;
+		}
 		/**
 		* Function Name: confirm_cf7_activate
 		* Function Description: Notice for contact form activation
@@ -64,20 +74,6 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 			echo "<p>". sprintf( __( 'The <strong>CF7 to Spreadsheet </strong> plugin requires <strong><a href="%s">Contact Form7</strong></a> plugin installed & activated.' , 'bb-bootstrap-alerts' ), $network_url ) ."</p>";
 			echo '</div>';
 		}
-
-		/**
-		* Function Name: cgs_google_spreadsheet_notice
-		* Function Description: Notice for connecting to google spreadsheet account
-		*/
-		public function cgs_google_spreadsheet_notice() {
-			$get_token = json_decode( get_option('cf7_to_spreadsheet_google_token'),true );
-			if ( empty( $get_token['access_token'] ) ) {
-				$cf7_settings_url = admin_url( 'options-general.php?page=cf7-to-spreadsheet' );
-				echo '<div class="update-nag notice csg-notice"><p>CF7 to Spreadsheet needs to connect with <a href='.$cf7_settings_url.'>Google Spreadsheet Account</a>. </p>
-				</div>';
-			}
-		}
-
 		/**
 		* Function Name: register_setting
 		* Function Description: Add plugin in admin setting menu
@@ -108,6 +104,8 @@ if( !class_exists( "Cgs_to_Spreadsheet" ) ) {
 		*/
 		public function admin_init_register_setting() {
 			register_setting( 'cf7_to_spreadsheet_plugin_setting', 'cf7_to_spreadsheet_google_code' );
+			register_setting( 'cf7_to_spreadsheet_plugin_setting_api', 'cf7_to_spreadsheet_clientid');	
+			register_setting( 'cf7_to_spreadsheet_plugin_setting_api', 'cf7_to_spreadsheet_clientsecret');
 		}
 
 		/**
