@@ -1,6 +1,6 @@
 === CF7 to Spreadsheet ===
-Contributors: brainstormforce, abhishilawat
-Donate link: https://www.brainstormforce.com/payment/
+Contributors: brainstormforce
+Donate link: https://www.paypal.me/BrainstormForce
 Tags: google, sheets, spreadsheets, google sheets, google spreadsheets,  cf7, contact form 7, data, form, form data
 Requires at least: 4.4
 Tested up to: 5.1.1
